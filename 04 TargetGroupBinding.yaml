@@ -1,0 +1,22 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: ingress-gateway
+spec:
+  ipAddressType: ipv4
+  networking:
+    ingress:
+    - from:
+      - securityGroup:
+          groupID: sg-123567890
+      ports:
+      - port: 32430
+        protocol: TCP
+  nodeSelector:
+    matchLabels:
+      role: worker
+  serviceRef:
+    name: ingress-public
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:ua-east-1:123456789:targetgroup/gw12345678912345678/asd12345678
+  targetType: instance

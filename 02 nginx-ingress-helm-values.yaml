@@ -1,0 +1,9 @@
+# helm install nginx-ingress ingress-nginx/ingress-nginx
+controller:
+  service:
+    enabled: true
+    enableHttp: true
+    enableHttps: false
+    nodePorts:
+      http: "32430"
+

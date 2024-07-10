@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  generation: 1
+  name: echoserver
+  namespace: echoserver
+  annotations:
+    nginx.org/server-snippets: |
+      location ~ {
+        return 200 "ok";
+      }
+spec:
+  ingressClassName: nginx
+  # host: no-host-value
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: echoserver
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
