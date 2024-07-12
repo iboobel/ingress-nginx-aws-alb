@@ -1,0 +1,13 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: main-gitops-repo
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  secretRef:
+    name: github-deployment-key
+  timeout: 60s
+  url: ssh://git@github.com/example/gitops-repo
+
