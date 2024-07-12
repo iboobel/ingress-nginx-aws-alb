@@ -5,7 +5,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: master
+    branch: main
   secretRef:
     name: github-deployment-key
   timeout: 60s
